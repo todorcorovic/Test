@@ -1,0 +1,83 @@
+﻿@{
+    ViewBag.Title = "Tasks";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .task {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+            .task p {
+                color: #444;
+                line-height: 1.6;
+                margin-bottom: 0;
+            }
+
+                .task p strong {
+                    color: #007bff;
+                }
+
+        .code {
+            font-family: Consolas, monospace;
+            background-color: #f2f2f2;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <main aria-labelledby="title">
+        <h2 id="title">@ViewBag.Title</h2>
+
+        <div class="task">
+            <p>
+                <strong>a) Visualize JSON data via HTML table using C#</strong><br>
+                Write a program that will create an HTML page showing a table of employees ordered by the total time worked.
+                The table should display the Name and the Total time worked. Color the table row if the employee worked less than 100 hours.
+                The data for this task must be retrieved from a GET call on the following API endpoint:
+                <br><br>
+                <code class="code">https://rc-vault-fap-live-1.azurewebsites.net/api/gettimeentries?code=vO17RnE8vuzXzPJo5eaLLjXjmRW07law99QTD90zat9FfOQJKKUcgQ==</code>
+            </p>
+        </div>
+
+        <div class="task">
+            <p>
+                <strong>b) Visualize JSON data in a PIE Chart using C#</strong><br>
+                Write a program that will generate a PNG (image) file using the data from the REST endpoint.
+                The pie chart will display the percentage of the total time worked by an employee.
+            </p>
+        </div>
+    </main>
+</body>
+</html>

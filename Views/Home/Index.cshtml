@@ -1,0 +1,100 @@
+﻿@model List<Test.Models.Employee>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Dashboard</title>
+    <style>
+        /* Reset default margin and padding */
+        body, h2, table {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Set base font size */
+        body {
+            font-size: 16px;
+        }
+
+        /* Container styling */
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        tr:hover {
+            background-color: #e9ecef; /* Light gray background on hover */
+        }
+
+        /* Highlighted row styling */
+        .highlight {
+            background-color: lightcoral;
+        }
+
+        /* Chart container styling */
+        .chart-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+            .chart-container img {
+                max-width: 100%;
+                height: auto;
+                border-radius: 5px; /* Add some border radius for image */
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for image */
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Employee Table</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Total Time Worked (in hours)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var employee in Model)
+                {
+                    <tr @(employee.TotalTimeWorked < 100 ? "class=highlight" : "")>
+                        <td>@employee.Name</td>
+                        <td>@employee.TotalTimeWorked</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    @if (ViewBag.ExceptionMessage != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            @ViewBag.ExceptionMessage
+        </div>
+    }
+</body>
+</html>
