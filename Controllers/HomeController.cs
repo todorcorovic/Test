@@ -27,6 +27,22 @@ namespace Test.Controllers
             List<Employee> employees = CalculateTotalTimeWorked(workLogs);
             employees = employees.OrderByDescending(e => e.TotalTimeWorked).ToList();
 
+            // Create a Chart object
+            var chart = new Chart(width: 500, height: 500)
+                .AddTitle("Percentage of Total Time Worked by Employee")
+                .AddSeries(
+                    name: "EmployeeTime",
+                    chartType: "Pie",
+                    xValue: employees.Select(e => e.Name).ToArray(),
+                    yValues: employees.Select(e => e.TotalTimeWorked).ToArray()
+                );
+
+            // Save chart as PNG
+            string filePath = Server.MapPath("~/Content/pie_chart.png");
+            chart.Save("~/Content/pie_chart.png", "png");
+
+            ViewBag.ChartPath = "/Content/pie_chart.png";
+
             return View(employees);
         }
 
